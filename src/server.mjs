@@ -20,6 +20,17 @@ fastify.post('/stack', async (request, reply) => {
   return reply.send(stack);
 });
 
+fastify.put('/stack/:id', async (request, reply) => {
+  const { id } = request.params;
+  console.log(request.params);
+
+  const stack = await prisma.stack.update({
+    where: { id: parseInt(id) },
+    data: { version: 'ES8' },
+  });
+  return reply.send(stack);
+});
+
 const start = async () => {
   try {
     await fastify.listen({ port: 5000 });
