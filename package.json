@@ -1,0 +1,23 @@
+{
+  "name": "fastify-auth-api",
+  "version": "0.0.1",
+  "description": "API to serve a nextjs front-end",
+  "main": "src/server.mjs",
+  "keywords": [
+    "fastify",
+    "crud",
+    "prisma"
+  ],
+  "author": "Joabesv<joabevarjao123@gmail.com>",
+  "license": "ISC",
+  "scripts": {
+    "start:dev": "npx nodemon ."
+  },
+  "dependencies": {
+    "@prisma/client": "^4.5.0",
+    "fastify": "^4.9.2"
+  },
+  "devDependencies": {
+    "prisma": "^4.5.0"
+  }
+}
