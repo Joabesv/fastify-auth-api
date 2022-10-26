@@ -2,22 +2,17 @@ import Fastify from 'fastify';
 import Autoload from '@fastify/autoload';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { prismaClient as prisma } from '../database/connection.mjs';
+
+const server = Fastify({ logger: true });
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const server = Fastify({ logger: true });
 server.register(Autoload, {
   dir: join(__dirname, '../plugins'),
 });
 
 server.register(Autoload, {
   dir: join(__dirname, '../routes'),
-});
-
-server.get('/stack', async (request, reply) => {
-  const stacks = await prisma.stack.findMany();
-  await reply.send(stacks);
 });
 
 server.post('/stack', async (request, reply) => {
