@@ -15,17 +15,6 @@ server.register(Autoload, {
   dir: join(__dirname, '../routes'),
 });
 
-// server.post('/stack', async (request, reply) => {
-//   const { tech, content } = request.body;
-//   const stack = await prisma.stack.create({
-//     data: {
-//       tech,
-//       content,
-//     },
-//   });
-//   return reply.send(stack);
-// });
-
 // server.put('/stack/:id', async (request, reply) => {
 //   const { id } = request.params;
 //   console.log(request.params);
