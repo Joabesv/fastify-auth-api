@@ -15,15 +15,4 @@ server.register(Autoload, {
   dir: join(__dirname, '../routes'),
 });
 
-// server.put('/stack/:id', async (request, reply) => {
-//   const { id } = request.params;
-//   console.log(request.params);
-
-//   const stack = await prisma.stack.update({
-//     where: { id: parseInt(id) },
-//     data: { version: 'ES8' },
-//   });
-//   return reply.send(stack);
-// });
-
 export { server };
