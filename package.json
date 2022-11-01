@@ -2,7 +2,7 @@
   "name": "fastify-auth-api",
   "version": "0.0.1",
   "description": "API to serve a nextjs front-end",
-  "main": "src/index.mjs",
+  "main": "index.js",
   "keywords": [
     "fastify",
     "crud",
@@ -10,6 +10,9 @@
   ],
   "author": "Joabesv<joabevarjao123@gmail.com>",
   "license": "ISC",
+  "engines": {
+    "node": ">=16.15"
+  },
   "scripts": {
     "start:dev": "node --watch --no-warnings src/index.mjs"
   },
@@ -25,6 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.42.0",
     "eslint": "^8.0.1",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard-with-typescript": "^23.0.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.0.0",

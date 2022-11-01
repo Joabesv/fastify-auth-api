@@ -2,7 +2,7 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint", "prettier"],
-  "extends": ["standard-with-typescript", "prettier"],
+  "extends": ["standard-with-typescript", "plugin:prettier/recommended"],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
@@ -11,5 +11,7 @@
     "es2021": true,
     "node": true
   },
-  "rules": {}
+  "rules": {
+    "prettier/prettier": "error"
+  }
 }
