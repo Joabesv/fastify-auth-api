@@ -2,6 +2,7 @@ import glob from 'tiny-glob';
 import { build } from 'esbuild';
 import esbuildPluginPino from 'esbuild-plugin-pino';
 import { pino } from 'pino';
+import { loggerSetup } from './src/config/logger';
 
 (async () => {
   const entryPoints = await glob('src/**/*.ts');
@@ -9,16 +10,15 @@ import { pino } from 'pino';
   await build({
     entryPoints,
     logLevel: 'info',
-    outdir: 'bundle',
+    outdir: 'dist',
     bundle: true,
-    minify: true,
     platform: 'node',
     format: 'cjs',
     sourcemap: true,
     plugins: [esbuildPluginPino({ transports: ['pino-pretty'] })],
   });
 })().catch((err) => {
-  const logger = pino();
+  const logger = pino(loggerSetup);
   logger.error('error while trying to build!', err);
   process.exit(1);
 });
