@@ -1,6 +1,11 @@
+import { Stack } from '@prisma/client';
+import { FastifyReply, FastifyRequest } from 'fastify';
 import { prismaClient as prisma } from '../../database/connection';
 
-export async function postStacks(request, reply) {
+export async function postStacks(
+  request: FastifyRequest<{ Body: Body }>,
+  reply: FastifyReply
+): Promise<void> {
   const { tech, content, version } = request.body;
   const stacks = await prisma.stack.findMany();
   const stackAlreadyExists = stacks.some((stack) => stack.tech === tech);
@@ -17,3 +22,6 @@ export async function postStacks(request, reply) {
 
   return reply.status(201).send(newStack);
 }
+
+// gotta make this one better
+type Body = Stack;

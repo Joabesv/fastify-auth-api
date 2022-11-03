@@ -4,7 +4,7 @@ import {
   PrismaClientKnownRequestError,
 } from '@prisma/client/runtime/index.js';
 import { prismaClient as prisma } from '../../database/connection';
-import { server } from '../../server/server';
+import { server } from '../../server';
 
 const { log } = server;
 
