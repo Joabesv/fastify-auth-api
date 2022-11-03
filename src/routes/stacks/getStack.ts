@@ -1,4 +1,4 @@
-import { prismaClient as prisma } from '../../database/connection.mjs';
+import { prismaClient as prisma } from '../../database/connection';
 
 export async function getStack(request, reply) {
   const { id } = request.params;

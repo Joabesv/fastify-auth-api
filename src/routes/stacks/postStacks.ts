@@ -1,9 +1,9 @@
-import { prismaClient as prisma } from '../../database/connection.mjs';
+import { prismaClient as prisma } from '../../database/connection';
 
 export async function postStacks(request, reply) {
   const { tech, content, version } = request.body;
   const stacks = await prisma.stack.findMany();
-  const stackAlreadyExists = stacks.some(stack => stack.tech === tech);
+  const stackAlreadyExists = stacks.some((stack) => stack.tech === tech);
   if (stackAlreadyExists) {
     return reply.badRequest('Stack already created');
   }
