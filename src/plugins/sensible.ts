@@ -1,6 +1,8 @@
-import sensible, { SensibleOptions } from '@fastify/sensible';
 import { FastifyPluginAsync } from 'fastify';
 import FastifyPlugin from 'fastify-plugin';
+import sensible, { SensibleOptions } from '@fastify/sensible';
+import { server } from '../server';
+const { log } = server;
 
 const sensiblePlugin: FastifyPluginAsync<SensibleOptions> = async (
   fastify,
@@ -9,7 +11,10 @@ const sensiblePlugin: FastifyPluginAsync<SensibleOptions> = async (
   try {
     await fastify.register(sensible);
   } catch (err: Error | unknown) {
-    console.log('error registering Sensible plugin', err);
+    log.error({
+      msg: '[SENSIBLE]: Error registering sensible plugin',
+      err,
+    });
     process.exit(1);
   }
 };
