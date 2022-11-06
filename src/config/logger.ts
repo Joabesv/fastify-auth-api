@@ -1,21 +1,27 @@
-import { PrettyOptions } from 'pino-pretty';
+import { pino } from 'pino';
 
-// still want to make this one better
-export const loggerSetup: IloggerSetup = {
-  transport: {
-    target: 'pino-pretty',
-    options: {
-      destination: 1,
-      colorize: true,
-      translateTime: 'HH:MM:ss.l',
-      ignore: 'pid,hostname',
+const { cwd } = process;
+const pinoTransport = {
+  targets: [
+    {
+      level: 'info',
+      target: 'pino-pretty',
+      options: {
+        destination: 1,
+        colorize: true,
+        translateTime: 'HH:MM:ss.l',
+        ignore: 'pid,hostname',
+      },
     },
-  },
+    {
+      level: 'error',
+      target: 'pino/file',
+      options: {
+        destination: `${cwd()}/src/tmp/errors.log`,
+        mkdir: true,
+      },
+    },
+  ],
 };
 
-interface IloggerSetup {
-  transport: {
-    target: string;
-    options: PrettyOptions;
-  };
-}
+export const logger = pino({ transport: pinoTransport });

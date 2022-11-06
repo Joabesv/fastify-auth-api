@@ -1,9 +1,9 @@
 import Fastify from 'fastify';
 import Autoload from '@fastify/autoload';
 import { join } from 'node:path';
-import { loggerSetup } from '../config/logger';
+import { logger } from '../config/logger';
 
-const server = Fastify({ logger: loggerSetup });
+const server = Fastify({ logger });
 
 // eslint-disable-next-line
 server.register(Autoload, {
