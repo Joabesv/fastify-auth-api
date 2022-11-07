@@ -1,6 +1,6 @@
 import { pino } from 'pino';
-
 const { cwd } = process;
+
 const pinoTransport = {
   targets: [
     {

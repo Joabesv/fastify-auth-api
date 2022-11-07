@@ -1,6 +1,6 @@
 import { server } from './server';
 
-const start = async (): Promise<void> => {
+async function start(): Promise<void> {
   try {
     await server.listen({ port: 5000 });
   } catch (error: Error | unknown) {
@@ -10,7 +10,7 @@ const start = async (): Promise<void> => {
     });
     process.exit(1);
   }
-};
+}
 
 // eslint-disable-next-line
 start();
