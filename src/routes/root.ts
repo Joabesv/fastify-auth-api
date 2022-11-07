@@ -1,10 +1,15 @@
 import { FastifyPluginAsync } from 'fastify';
 
 const root: FastifyPluginAsync = async (fastify, opts) => {
+  const { log } = fastify;
+
   fastify.get('/', async (request, reply) => {
-    const { log } = fastify;
-    log.info('root route is working');
-    return reply.code(200).send({ msg: 'Welcome to my api' });
+    try {
+      log.info('root route is working');
+      return reply.code(200).send({ msg: 'Welcome to my api' });
+    } catch (error) {
+      log.error(`[Error root route] ${error}`);
+    }
   });
 };
 
